@@ -7,12 +7,13 @@ let closeCart = document.querySelector("#close-cart");
 cartIcon.onclick = () => {
   cart.classList.add("active");
 };
+
 //Close Cart
 closeCart.onclick = () => {
   cart.classList.remove("active");
 };
 
-//Cart Working JS
+//Cart Working JavaScript 
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
@@ -28,22 +29,23 @@ function ready() {
     var button = removeCartButtons[i];
     button.addEventListener("click", removeCartItem);
   }
+  
   // Quantity Changes
   var quantityInputs = document.getElementsByClassName("cart-quantity");
   for (var i = 0; i < quantityInputs.length; i++) {
     var input = quantityInputs[i];
     input.addEventListener("change", quantityChanged);
   }
+  
   // Add To Cart
   var addCart = document.getElementsByClassName("add-cart");
   for (var i = 0; i < addCart.length; i++) {
     var button = addCart[i];
     button.addEventListener("click", addCartClicked);
   }
+  
   //Buy Button Work
-  document
-  .getElementsByClassName('btn-buy')[0]
-  .addEventListener("click", buyButtonClicked);
+  document.getElementsByClassName('btn-buy')[0].addEventListener("click", buyButtonClicked);
 }
 
 //Buy Button
@@ -82,6 +84,7 @@ function addCartClicked(event) {
   addProductToCart(title, price, productImg);
   updatetotal();
 }
+
 function addProductToCart(title, price, productImg) {
   var cartShopBox = document.createElement("div");
   cartShopBox.classList.add("cart-box");
@@ -112,6 +115,7 @@ function addProductToCart(title, price, productImg) {
     .addEventListener("change", quantityChanged);
 
 }
+
   //Update Total
   function updatetotal() {
     var cartContent = document.getElementsByClassName("cart-content")[0];
@@ -126,10 +130,9 @@ function addProductToCart(title, price, productImg) {
       var quantity = quantityElement.value;
       total = total + price * quantity;
     }
+    
       // If price Contain some Cents Value
       total = Math.round(total * 100) / 100;
-
       document.getElementsByClassName("total-price")[0].innerText = "$" + total;
-    
   }
 
